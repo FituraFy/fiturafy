@@ -1313,6 +1313,70 @@ footer {
   </div>
 </section>
 
+<!-- CATEGORIES -->
+<section class="cat-section" id="categories">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-label">Browse by Type</span>
+      <h2 class="section-title">Shop by <span class="accent">Category</span></h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card reveal reveal-delay-1" onclick="triggerCatSearch('Supplements')">
+        <span class="cat-emoji">🧪</span>
+        <div class="cat-name">Supplements</div>
+        <div class="cat-count">48 deals</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-2" onclick="triggerCatSearch('Footwear')">
+        <span class="cat-emoji">👟</span>
+        <div class="cat-name">Footwear</div>
+        <div class="cat-count">32 deals</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-3" onclick="triggerCatSearch('Equipment')">
+        <span class="cat-emoji">🏋️</span>
+        <div class="cat-name">Equipment</div>
+        <div class="cat-count">27 deals</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-4" onclick="triggerCatSearch('Apparel')">
+        <span class="cat-emoji">👕</span>
+        <div class="cat-name">Apparel</div>
+        <div class="cat-count">56 deals</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-1" onclick="triggerCatSearch('Apps')">
+        <span class="cat-emoji">📱</span>
+        <div class="cat-name">Apps & Tech</div>
+        <div class="cat-count">19 deals</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-2" onclick="triggerCatSearch('Nutrition')">
+        <span class="cat-emoji">🥗</span>
+        <div class="cat-name">Nutrition</div>
+        <div class="cat-count">34 deals</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-3" onclick="triggerCatSearch('Recovery')">
+        <span class="cat-emoji">🛁</span>
+        <div class="cat-name">Recovery</div>
+        <div class="cat-count">22 deals</div>
+      </div>
+      <div class="cat-card reveal reveal-delay-4" onclick="triggerCatSearch('Running')">
+        <span class="cat-emoji">🏃</span>
+        <div class="cat-name">Running</div>
+        <div class="cat-count">41 deals</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="affiliate-notice">⚡ Affiliate Links — We earn a small commission at no cost to you</div>
+      <h2 class="section-title">Top <span class="accent">Picks</span></h2>
+      <p class="section-sub">Hand-picked fitness products our community loves. Every link supports Fiturafy for free.</p>
+    </div>
+    <div id="productsContainer"></div>
+  </div>
+</section>
+
 <!-- DEALS -->
 <section class="deals-section" id="deals">
   <div class="container">
@@ -1382,105 +1446,6 @@ footer {
     </div>
   </div>
 </section>
-
-<!-- CATEGORIES -->
-<section class="cat-section" id="categories">
-  <div class="container">
-    <div style="text-align:center;" class="reveal">
-      <span class="section-label">Browse by Type</span>
-      <h2 class="section-title">Shop by <span class="accent">Category</span></h2>
-    </div>
-    <div class="cat-grid">
-      <div class="cat-card reveal reveal-delay-1" onclick="triggerCatSearch('Supplements')">
-        <span class="cat-emoji">🧪</span>
-        <div class="cat-name">Supplements</div>
-        <div class="cat-count">48 deals</div>
-      </div>
-      <div class="cat-card reveal reveal-delay-2" onclick="triggerCatSearch('Footwear')">
-        <span class="cat-emoji">👟</span>
-        <div class="cat-name">Footwear</div>
-        <div class="cat-count">32 deals</div>
-      </div>
-      <div class="cat-card reveal reveal-delay-3" onclick="triggerCatSearch('Equipment')">
-        <span class="cat-emoji">🏋️</span>
-        <div class="cat-name">Equipment</div>
-        <div class="cat-count">27 deals</div>
-      </div>
-      <div class="cat-card reveal reveal-delay-4" onclick="triggerCatSearch('Apparel')">
-        <span class="cat-emoji">👕</span>
-        <div class="cat-name">Apparel</div>
-        <div class="cat-count">56 deals</div>
-      </div>
-      <div class="cat-card reveal reveal-delay-1" onclick="triggerCatSearch('Apps')">
-        <span class="cat-emoji">📱</span>
-        <div class="cat-name">Apps & Tech</div>
-        <div class="cat-count">19 deals</div>
-      </div>
-      <div class="cat-card reveal reveal-delay-2" onclick="triggerCatSearch('Nutrition')">
-        <span class="cat-emoji">🥗</span>
-        <div class="cat-name">Nutrition</div>
-        <div class="cat-count">34 deals</div>
-      </div>
-      <div class="cat-card reveal reveal-delay-3" onclick="triggerCatSearch('Recovery')">
-        <span class="cat-emoji">🛁</span>
-        <div class="cat-name">Recovery</div>
-        <div class="cat-count">22 deals</div>
-      </div>
-      <div class="cat-card reveal reveal-delay-4" onclick="triggerCatSearch('Running')">
-        <span class="cat-emoji">🏃</span>
-        <div class="cat-name">Running</div>
-        <div class="cat-count">41 deals</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section class="reviews-section" id="reviews">
-  <div class="container">
-    <div style="text-align:center;" class="reveal">
-      <span class="section-label">What People Say</span>
-      <h2 class="section-title">Real <span class="accent">Results</span></h2>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card reveal reveal-delay-1">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-quote">"Finally a deals site that actually works. The codes are real and the savings are genuine. This is the only way I shop for kit now."</p>
-        <div class="review-author">
-          <div class="review-avatar">JH</div>
-          <div>
-            <div class="review-name">Jamie H.</div>
-            <div class="review-handle">Powerlifter · Manchester</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card reveal reveal-delay-2">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-quote">"As someone who goes through supplements every month. Fiturafy has literally paid for itself. Real codes that actually work every single week."</p>
-        <div class="review-author">
-          <div class="review-avatar">SR</div>
-          <div>
-            <div class="review-name">Sarah R.</div>
-            <div class="review-handle">Bikini Athlete · London</div>
-          </div>
-        </div>
-      </div>
-      <div class="review-card reveal reveal-delay-3">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-quote">"I run 60+ miles a week and running shoes aren't cheap. Found a great discount code that saved me over £50. Genuinely can't believe this is free to use."</p>
-        <div class="review-author">
-          <div class="review-avatar">MC</div>
-          <div>
-            <div class="review-name">Mike C.</div>
-            <div class="review-handle">Ultra Runner · Austin TX</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 
 <!-- BRAND TEASER -->
 <section class="brand-teaser-section">
@@ -1668,6 +1633,7 @@ footer {
           <li><a href="#">Blog</a></li>
           <li><a href="#extension">Browser Extension</a></li>
           <li><a href="submit-deal.html">Submit a Deal</a></li>
+          <li><a href="brands.html" style="color:var(--accent-light);font-weight:600;">Brand Partnership ✦</a></li>
           <li><a href="#">Partner With Us</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
@@ -1912,8 +1878,10 @@ function doMobileSearch() {
 // ===== TICKER =====
 const tickerData = [];
 function buildTicker() {
-  const track = document.getElementById('ticker');
+  const track = document.getElementById('tickerTrack');
+  if (!track) return;
   const items = [...tickerData, ...tickerData];
+  if (!items.length) return;
   track.innerHTML = items.map(t => `
     <span class="ticker-item">
       <span class="dot"></span>
