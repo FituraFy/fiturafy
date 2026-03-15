@@ -1918,9 +1918,16 @@ function buildTicker() {
 function toggleTheme() {
   const html = document.documentElement;
   const isDark = html.getAttribute('data-theme') === 'dark';
-  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  localStorage.setItem('fiturafy-theme', isDark ? 'light' : 'dark');
+  const newTheme = isDark ? 'light' : 'dark';
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('fiturafy-theme', newTheme);
   updateThemeIcon(!isDark);
+  // Force nav background to update (backdrop-filter blocks CSS var transitions)
+  const nav = document.querySelector('nav');
+  if (nav) {
+    nav.style.background = newTheme === 'light' ? 'rgba(244,244,248,0.95)' : 'rgba(10,10,15,0.92)';
+    nav.style.borderBottomColor = newTheme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.08)';
+  }
 }
 function updateThemeIcon(isLight) {
   const moonSVG = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
@@ -1934,6 +1941,12 @@ document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 const savedTheme = localStorage.getItem('fiturafy-theme') || 'dark';
 document.documentElement.setAttribute('data-theme', savedTheme);
 updateThemeIcon(savedTheme === 'light');
+// Apply nav colour on load too
+const navEl = document.querySelector('nav');
+if (navEl) {
+  navEl.style.background = savedTheme === 'light' ? 'rgba(244,244,248,0.95)' : 'rgba(10,10,15,0.92)';
+  navEl.style.borderBottomColor = savedTheme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.08)';
+}
 
 // ===== HAMBURGER =====
 const hamburger = document.getElementById('hamburger');

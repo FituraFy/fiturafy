@@ -308,11 +308,22 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 0;}
     if(btn) btn.querySelector('svg').innerHTML = light ? moon : sun;
   }
   updateIcon(saved === 'light');
+  const navEl = document.querySelector('nav');
+  if (navEl) {
+    navEl.style.background = saved === 'light' ? 'rgba(244,244,248,0.95)' : 'rgba(10,10,15,0.92)';
+    navEl.style.borderBottomColor = saved === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.08)';
+  }
   document.getElementById('themeBtn').addEventListener('click', function(){
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
-    localStorage.setItem('fiturafy-theme', isLight ? 'dark' : 'light');
+    const newTheme = isLight ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('fiturafy-theme', newTheme);
     updateIcon(!isLight);
+    const nav = document.querySelector('nav');
+    if (nav) {
+      nav.style.background = newTheme === 'light' ? 'rgba(244,244,248,0.95)' : 'rgba(10,10,15,0.92)';
+      nav.style.borderBottomColor = newTheme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.08)';
+    }
   });
   document.getElementById('hamburger').addEventListener('click', function(){
     document.getElementById('mobileMenu').classList.toggle('open');
