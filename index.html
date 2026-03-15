@@ -938,6 +938,46 @@ nav {
 }
 .waitlist-count strong { color: var(--accent); }
 
+
+
+/* ===== BRAND TEASER ===== */
+.brand-teaser-section { padding:80px 0; background:var(--bg2); position:relative; overflow:hidden; }
+.brand-teaser-section::before { content:''; position:absolute; top:-200px; right:-200px; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%); pointer-events:none; }
+.brand-teaser-inner { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; position:relative; z-index:1; }
+.brand-perks { display:flex; flex-direction:column; gap:16px; }
+.brand-perk { display:flex; align-items:flex-start; gap:14px; }
+.brand-stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.brand-stat-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px; text-align:center; transition:border-color 0.2s; }
+.brand-stat-card:hover { border-color:rgba(59,130,246,0.3); }
+.brand-stat-num { font-family:'Bebas Neue',sans-serif; font-size:40px; color:var(--accent); line-height:1; }
+.brand-stat-label { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--text3); margin-top:4px; }
+@media(max-width:768px) { .brand-teaser-inner { grid-template-columns:1fr; gap:40px; } }
+
+/* ===== CREATOR TEASER ===== */
+.creator-teaser-section { padding:80px 0; background:var(--bg); position:relative; overflow:hidden; }
+.creator-teaser-section::before { content:''; position:absolute; bottom:-200px; left:-200px; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%); pointer-events:none; }
+.creator-teaser-inner { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; position:relative; z-index:1; }
+.creator-perks { display:flex; flex-direction:column; gap:16px; }
+.creator-perk { display:flex; align-items:flex-start; gap:14px; }
+.perk-icon { font-size:22px; flex-shrink:0; width:44px; height:44px; border-radius:10px; background:var(--surface); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; }
+.perk-title { font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; letter-spacing:0.04em; margin-bottom:2px; }
+.perk-desc { font-size:13px; color:var(--text2); line-height:1.5; }
+.creator-teaser-right { display:flex; justify-content:center; }
+.creator-mockup { background:var(--surface); border:1px solid var(--card-border,rgba(59,130,246,0.15)); border-radius:16px; overflow:hidden; width:100%; max-width:340px; box-shadow:0 24px 64px var(--shadow,rgba(0,0,0,0.6)); }
+.mockup-header { background:var(--bg3); padding:10px 14px; display:flex; align-items:center; gap:8px; border-bottom:1px solid var(--border); }
+.mockup-dot { width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent); }
+.mockup-url { font-family:'Barlow Condensed',sans-serif; font-size:12px; color:var(--text3); letter-spacing:0.04em; }
+.mockup-body { padding:24px; text-align:center; }
+.mockup-avatar { width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent-dark,#2563eb)); display:flex; align-items:center; justify-content:center; font-family:'Bebas Neue',sans-serif; font-size:22px; color:white; margin:0 auto 12px; }
+.mockup-name { font-family:'Bebas Neue',sans-serif; font-size:22px; margin-bottom:4px; }
+.mockup-sub { font-size:12px; color:var(--text3); font-family:'Barlow Condensed',sans-serif; margin-bottom:20px; }
+.mockup-stats { display:flex; justify-content:space-around; padding:14px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin-bottom:16px; }
+.mockup-stat-num { font-family:'Bebas Neue',sans-serif; font-size:24px; color:var(--accent); line-height:1; }
+.mockup-stat-label { font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text3); margin-top:2px; }
+.mockup-deals { display:flex; flex-direction:column; gap:8px; }
+.mockup-deal { display:flex; justify-content:space-between; align-items:center; padding:8px 12px; border-radius:6px; background:var(--bg3); font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:600; }
+@media(max-width:768px) { .creator-teaser-inner { grid-template-columns:1fr; gap:40px; } .creator-teaser-right { display:none; } }
+
 /* ===== FOOTER ===== */
 footer {
   background: var(--bg);
@@ -1433,6 +1473,134 @@ footer {
           <div>
             <div class="review-name">Mike C.</div>
             <div class="review-handle">Ultra Runner · Austin TX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- BRAND TEASER -->
+<section class="brand-teaser-section">
+  <div class="container">
+    <div class="brand-teaser-inner">
+      <div class="reveal">
+        <span class="section-label">For Fitness Brands</span>
+        <h2 class="section-title" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);margin-bottom:16px;">Get Your Brand <span class="accent">In Front</span> of Buyers</h2>
+        <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:480px;margin-bottom:28px;">
+          Fiturafy puts your deals in front of thousands of fitness consumers who are actively searching for discounts — at the exact moment they're ready to buy.
+        </p>
+        <div class="brand-perks">
+          <div class="brand-perk">
+            <div class="perk-icon">🎯</div>
+            <div><div class="perk-title">100% Fitness Audience</div><div class="perk-desc">Every visitor is a fitness consumer — not random traffic</div></div>
+          </div>
+          <div class="brand-perk">
+            <div class="perk-icon">💸</div>
+            <div><div class="perk-title">Free to List</div><div class="perk-desc">No upfront fees — we earn only when your code drives a sale</div></div>
+          </div>
+          <div class="brand-perk">
+            <div class="perk-icon">✅</div>
+            <div><div class="perk-title">Verified Codes Only</div><div class="perk-desc">We test every code before it goes live — no fake deals</div></div>
+          </div>
+          <div class="brand-perk">
+            <div class="perk-icon">⚡</div>
+            <div><div class="perk-title">48hr Turnaround</div><div class="perk-desc">Submit your deal and we'll review and publish within 48 hours</div></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;">
+          <a href="submit-deal.html" class="btn btn-primary">Submit a Deal →</a>
+          <a href="submit-deal.html" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="brand-stats-grid">
+          <div class="brand-stat-card">
+            <div class="brand-stat-num">100%</div>
+            <div class="brand-stat-label">Fitness Focused</div>
+          </div>
+          <div class="brand-stat-card">
+            <div class="brand-stat-num">Free</div>
+            <div class="brand-stat-label">To List Your Deal</div>
+          </div>
+          <div class="brand-stat-card">
+            <div class="brand-stat-num">48hr</div>
+            <div class="brand-stat-label">Review Time</div>
+          </div>
+          <div class="brand-stat-card">
+            <div class="brand-stat-num">Real</div>
+            <div class="brand-stat-label">Verified Codes Only</div>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding:20px;border-radius:12px;background:var(--surface);border:1px solid var(--border);">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">How It Works</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="width:20px;height:20px;border-radius:50%;background:rgba(59,130,246,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;flex-shrink:0;">1</span>Submit your deal with a business email</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="width:20px;height:20px;border-radius:50%;background:rgba(59,130,246,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;flex-shrink:0;">2</span>We verify and test your code</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="width:20px;height:20px;border-radius:50%;background:rgba(59,130,246,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;flex-shrink:0;">3</span>Your deal goes live within 48 hours</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="width:20px;height:20px;border-radius:50%;background:rgba(59,130,246,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;flex-shrink:0;">4</span>Fitness shoppers find and use your code</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREATOR PROGRAMME TEASER -->
+<section class="creator-teaser-section">
+  <div class="container">
+    <div class="creator-teaser-inner">
+      <div class="creator-teaser-left reveal">
+        <span class="section-label">For Fitness Creators</span>
+        <h2 class="section-title" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);margin-bottom:16px;">Turn Your <span class="accent">Audience</span> Into Income</h2>
+        <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:480px;margin-bottom:28px;">
+          Get your own Fiturafy page. Your followers save money on every brand they love. You earn a cut of every sale — passively, forever. No data hijacking. No link stealing. Just honest commissions.
+        </p>
+        <div class="creator-perks">
+          <div class="creator-perk">
+            <div class="perk-icon">💰</div>
+            <div><div class="perk-title">30% Revenue Share</div><div class="perk-desc">Earn 30% of everything Fiturafy makes from your audience</div></div>
+          </div>
+          <div class="creator-perk">
+            <div class="perk-icon">🔗</div>
+            <div><div class="perk-title">Your Own Page</div><div class="perk-desc">fiturafy.pages.dev/yourcreatorname — branded and ready to share</div></div>
+          </div>
+          <div class="creator-perk">
+            <div class="perk-icon">📊</div>
+            <div><div class="perk-title">Live Dashboard</div><div class="perk-desc">See clicks, codes used, and earnings in real time</div></div>
+          </div>
+          <div class="creator-perk">
+            <div class="perk-icon">🤝</div>
+            <div><div class="perk-title">We Never Steal Links</div><div class="perk-desc">Unlike Honey — your affiliate relationships stay yours</div></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;">
+          <a href="creators.html" class="btn btn-primary">Apply as a Creator</a>
+          <a href="creators.html#how" class="btn btn-outline">See How It Works</a>
+        </div>
+      </div>
+      <div class="creator-teaser-right reveal reveal-delay-2">
+        <div class="creator-mockup">
+          <div class="mockup-header">
+            <div class="mockup-dot"></div>
+            <div class="mockup-url">fiturafy.pages.dev/<span style="color:var(--accent)">yourcreatorname</span></div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-avatar">YN</div>
+            <div class="mockup-name">Your Name</div>
+            <div class="mockup-sub">Fitness Creator · Your Audience</div>
+            <div class="mockup-stats">
+              <div class="mockup-stat"><div class="mockup-stat-num">£---</div><div class="mockup-stat-label">This Month</div></div>
+              <div class="mockup-stat"><div class="mockup-stat-num">---</div><div class="mockup-stat-label">Codes Used</div></div>
+              <div class="mockup-stat"><div class="mockup-stat-num">---</div><div class="mockup-stat-label">Live Deals</div></div>
+            </div>
+            <div class="mockup-deals">
+              <div class="mockup-deal"><span>Deals</span><span style="color:var(--accent);font-weight:700;">Coming Soon</span></div>
+              <div class="mockup-deal"><span>Brands</span><span style="color:var(--accent);font-weight:700;">Being Added</span></div>
+              <div class="mockup-deal"><span>Earn</span><span style="color:var(--accent);font-weight:700;">Passively</span></div>
+            </div>
           </div>
         </div>
       </div>
