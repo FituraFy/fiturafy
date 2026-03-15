@@ -212,7 +212,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 0;}
               <option>Recovery</option><option>Running</option><option>Other</option>
             </select>
           </div>
-          <div class="form-field"><label class="form-label">Expiry Date <span class="req">*</span></label><input type="date" class="form-input" id="b-expiry"></div>
+          <div class="form-field"><label class="form-label">Expiry Date <span class="req">*</span></label><input type="text" class="form-input" id="b-expiry" placeholder="e.g. 30 Apr 2026"></div>
         </div>
         <div class="form-grid-2">
           <div class="form-field"><label class="form-label">Min Order Value</label><input type="text" class="form-input" id="b-minorder" placeholder="e.g. £30 or None"></div>
@@ -236,7 +236,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 0;}
         <div class="form-field" id="b-affurl-field" style="display:none;"><label class="form-label">Programme URL</label><input type="text" class="form-input" id="b-affurl" placeholder="Link to your affiliate programme"></div>
         <div class="form-field"><label class="form-label">Anything else?</label><textarea class="form-input" id="b-notes" placeholder="e.g. Exclusive code for Fiturafy, target audience info, commission rate..."></textarea></div>
 
-        <button class="submit-btn" onclick="submitBrand()">Submit for Review →</button>
+        <button class="submit-btn" id="brandSubmitBtn" onclick="submitBrand()">Submit for Review →</button>
         <div class="success-box" id="b-success">
           <div class="success-icon">🎉</div>
           <div class="success-title">Submission Received!</div>
@@ -319,7 +319,7 @@ function toggleAffField() {
 }
 document.getElementById('b-code').addEventListener('input', function(){ this.value = this.value.toUpperCase(); });
 function submitBrand() {
-  const required = ['b-company','b-website','b-name','b-title','b-email','b-code','b-discount','b-desc','b-cat','b-expiry','b-affiliate'];
+  const required = ['b-company','b-website','b-name','b-title','b-email','b-code','b-discount','b-desc','b-cat','b-affiliate'];
   let valid = true;
   required.forEach(id => {
     const el = document.getElementById(id);
@@ -340,7 +340,7 @@ function submitBrand() {
     err.textContent = '✕ Personal emails not accepted. Please use your company email.';
     return;
   }
-  document.querySelector('.submit-btn').style.display = 'none';
+  document.getElementById('brandSubmitBtn').style.display = 'none';
   document.getElementById('b-success').style.display = 'block';
   window.scrollTo({ top: document.getElementById('b-success').offsetTop - 100, behavior: 'smooth' });
 }
