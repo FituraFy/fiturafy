@@ -1264,6 +1264,79 @@ nav {
   text-decoration: underline;
 }
 
+
+/* ===== FEATURED PRODUCTS ===== */
+.products-section { padding: 80px 0; background: var(--bg2); }
+.products-section .section-header { text-align:center; margin-bottom:56px; }
+.products-section .section-title { font-size:clamp(36px,5vw,56px); line-height:1; margin-bottom:12px; }
+.products-section .section-sub { font-size:15px; color:var(--text2); max-width:500px; margin:0 auto; line-height:1.6; }
+
+.affiliate-notice {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 16px; border-radius:100px;
+  background:rgba(59,130,246,0.07); border:1px solid rgba(59,130,246,0.18);
+  font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:0.18em; text-transform:uppercase; color:var(--accent);
+  margin-bottom:20px;
+}
+
+.product-category-block { margin-bottom:56px; }
+.product-cat-header {
+  display:flex; align-items:center; gap:14px; margin-bottom:24px;
+  padding-bottom:14px; border-bottom:1px solid var(--border);
+}
+.product-cat-icon { font-size:24px; }
+.product-cat-title { font-family:'Bebas Neue',sans-serif; font-size:28px; }
+.product-cat-badge {
+  font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700;
+  letter-spacing:0.15em; text-transform:uppercase; padding:4px 10px; border-radius:4px;
+  background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2); color:var(--accent);
+}
+.product-cat-affiliate {
+  margin-left:auto; font-family:'Barlow Condensed',sans-serif; font-size:10px;
+  font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--text3); display:flex; align-items:center; gap:5px;
+}
+.product-cat-affiliate::before { content:'⚡'; font-size:10px; }
+
+.products-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+}
+.product-card {
+  background:var(--card-bg); border:1px solid var(--card-border);
+  border-radius:12px; overflow:hidden; transition:transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  display:flex; flex-direction:column;
+}
+.product-card:hover { transform:translateY(-4px); border-color:rgba(59,130,246,0.4); box-shadow:0 12px 32px rgba(0,0,0,0.3); }
+.product-img {
+  width:100%; aspect-ratio:1; object-fit:cover; background:var(--bg3);
+  display:flex; align-items:center; justify-content:center;
+  font-size:40px; border-bottom:1px solid var(--border);
+}
+.product-img img { width:100%; height:100%; object-fit:cover; }
+.product-img-placeholder { width:100%; aspect-ratio:1; background:var(--bg3); display:flex; align-items:center; justify-content:center; font-size:48px; border-bottom:1px solid var(--border); }
+.product-body { padding:14px; flex:1; display:flex; flex-direction:column; }
+.product-brand { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:4px; }
+.product-name { font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; color:var(--text); line-height:1.3; margin-bottom:8px; flex:1; }
+.product-price-row { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+.product-price { font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--accent); }
+.product-price-old { font-size:12px; color:var(--text3); text-decoration:line-through; font-family:'Barlow Condensed',sans-serif; }
+.product-buy-btn {
+  width:100%; padding:10px; border-radius:7px; background:var(--accent);
+  color:white; border:none; font-family:'Barlow Condensed',sans-serif;
+  font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase;
+  cursor:pointer; transition:all 0.2s; display:flex; align-items:center; justify-content:center; gap:6px;
+}
+.product-buy-btn:hover { background:var(--accent-dark); transform:translateY(-1px); }
+.product-affiliate-tag {
+  text-align:center; font-size:9px; color:var(--text3);
+  font-family:'Barlow',sans-serif; margin-top:8px; letter-spacing:0.03em;
+}
+
+@media (max-width:1024px) { .products-grid { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:768px) { .products-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:480px) { .products-grid { grid-template-columns:1fr 1fr; } }
+
 /* ===== FOOTER ===== */
 footer {
   background: var(--bg);
@@ -1958,6 +2031,19 @@ footer {
 </section>
 
 
+
+<!-- FEATURED PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="affiliate-notice">⚡ Affiliate Links — We earn a small commission at no cost to you</div>
+      <h2 class="section-title">Top <span class="accent">Picks</span></h2>
+      <p class="section-sub">Hand-picked fitness products our community loves. Every link supports Fiturafy for free.</p>
+    </div>
+    <div id="productsContainer"></div>
+  </div>
+</section>
+
 <!-- CREATOR PROGRAMME TEASER -->
 <section class="creator-teaser-section">
   <div class="container">
@@ -2475,6 +2561,112 @@ window.addEventListener('scroll', () => {
 });
 </script>
 <script>
+
+// ===== FEATURED PRODUCTS =====
+const PRODUCT_CATS = [
+  { id:'equipment', label:'Gym Equipment', icon:'💪' },
+  { id:'footwear',  label:'Footwear',      icon:'👟' },
+  { id:'apparel',   label:'Apparel',       icon:'👕' },
+  { id:'supplements',label:'Supplements', icon:'🥤' },
+  { id:'running',   label:'Running Gear',  icon:'🏃' },
+  { id:'recovery',  label:'Recovery Tools',icon:'🔧' },
+  { id:'apps',      label:'Apps & Tech',   icon:'📱' },
+  { id:'nutrition', label:'Nutrition',     icon:'🥗' },
+];
+
+const DEFAULT_PRODUCTS = [
+  // EQUIPMENT
+  { id:'p1',  cat:'equipment',   brand:'Mirafit',    name:'Adjustable Dumbbell Set 2-32kg', price:'£89.99',  oldPrice:'£129.99', emoji:'🏋️', url:'https://mirafit.co.uk' },
+  { id:'p2',  cat:'equipment',   brand:'Bowflex',    name:'SelectTech 552 Adjustable Dumbbells', price:'£249', oldPrice:'£329', emoji:'💪', url:'https://bowflex.com' },
+  { id:'p3',  cat:'equipment',   brand:'Concept2',   name:'Model D Indoor Rowing Machine', price:'£895',    oldPrice:'£1,095', emoji:'🚣', url:'https://concept2.com' },
+  { id:'p4',  cat:'equipment',   brand:'Rogue',      name:'Ohio Power Bar Stainless Steel', price:'£345',   oldPrice:'£395',   emoji:'🏗️', url:'https://roguefitness.com' },
+  // FOOTWEAR
+  { id:'p5',  cat:'footwear',    brand:'HOKA',       name:'Clifton 9 Running Shoes',       price:'£134.95', oldPrice:'£160',   emoji:'👟', url:'https://hoka.com' },
+  { id:'p6',  cat:'footwear',    brand:'On Running',  name:'Cloudmonster 2 Training Shoes', price:'£159.95', oldPrice:'£185',   emoji:'⚡', url:'https://on.com' },
+  { id:'p7',  cat:'footwear',    brand:'Asics',      name:'Gel-Kayano 31 Stability Shoes', price:'£139.99', oldPrice:'£165',   emoji:'🏃', url:'https://asics.com' },
+  { id:'p8',  cat:'footwear',    brand:'Brooks',     name:'Ghost 16 Everyday Run Shoe',    price:'£129.99', oldPrice:'£155',   emoji:'🦶', url:'https://brooksrunning.com' },
+  // APPAREL
+  { id:'p9',  cat:'apparel',     brand:'Gymshark',   name:'Vital Seamless 2.0 Leggings',  price:'£38',     oldPrice:'£55',    emoji:'👖', url:'https://gymshark.com' },
+  { id:'p10', cat:'apparel',     brand:'Lululemon',  name:'ABC Classic-Fit 5 Pocket Pant', price:'£118',    oldPrice:'£148',   emoji:'👕', url:'https://lululemon.com' },
+  { id:'p11', cat:'apparel',     brand:'Nike',       name:'Dri-FIT Training T-Shirt',      price:'£34.95',  oldPrice:'£45',    emoji:'✔️', url:'https://nike.com' },
+  { id:'p12', cat:'apparel',     brand:'Gymshark',   name:'Rest Day Hoodie',               price:'£55',     oldPrice:'£75',    emoji:'🧥', url:'https://gymshark.com' },
+  // SUPPLEMENTS
+  { id:'p13', cat:'supplements', brand:'Myprotein',  name:'Impact Whey Protein 2.5kg',    price:'£44.99',  oldPrice:'£59.99', emoji:'🥛', url:'https://myprotein.com' },
+  { id:'p14', cat:'supplements', brand:'ON',         name:'Gold Standard 100% Whey 2.27kg',price:'£54.99', oldPrice:'£69.99', emoji:'💊', url:'https://optimumnutrition.com' },
+  { id:'p15', cat:'supplements', brand:'Legion',     name:'Pulse Pre-Workout Supplement',  price:'£39.99',  oldPrice:'£49.99', emoji:'⚡', url:'https://legionathletics.com' },
+  { id:'p16', cat:'supplements', brand:'Myprotein',  name:'Creatine Monohydrate 500g',     price:'£14.99',  oldPrice:'£22.99', emoji:'🔬', url:'https://myprotein.com' },
+  // RUNNING
+  { id:'p17', cat:'running',     brand:'Garmin',     name:'Forerunner 265 GPS Watch',      price:'£349.99', oldPrice:'£449.99',emoji:'⌚', url:'https://garmin.com' },
+  { id:'p18', cat:'running',     brand:'Tracksmith', name:'Session Short Sleeve Tee',      price:'£68',     oldPrice:'£85',    emoji:'🏅', url:'https://tracksmith.com' },
+  { id:'p19', cat:'running',     brand:'Saucony',    name:'Endorphin Speed 4 Race Shoe',   price:'£159.99', oldPrice:'£189.99',emoji:'💨', url:'https://saucony.com' },
+  { id:'p20', cat:'running',     brand:'Garmin',     name:'HRM-Pro Plus Heart Rate Monitor',price:'£99.99', oldPrice:'£129.99',emoji:'❤️', url:'https://garmin.com' },
+  // RECOVERY
+  { id:'p21', cat:'recovery',    brand:'Therabody',  name:'Theragun Prime Massager',       price:'£249',    oldPrice:'£325',   emoji:'🔫', url:'https://therabody.com' },
+  { id:'p22', cat:'recovery',    brand:'Hyperice',   name:'Hypervolt 2 Pro Massage Gun',   price:'£299',    oldPrice:'£379',   emoji:'💆', url:'https://hyperice.com' },
+  { id:'p23', cat:'recovery',    brand:'Compex',     name:'Sport 6.0 EMS Muscle Stimulator',price:'£349',  oldPrice:'£449',   emoji:'⚡', url:'https://compex.com' },
+  { id:'p24', cat:'recovery',    brand:'Therabody',  name:'TheraFace PRO Device',          price:'£349',    oldPrice:'£425',   emoji:'😌', url:'https://therabody.com' },
+  // APPS & TECH
+  { id:'p25', cat:'apps',        brand:'Whoop',      name:'WHOOP 4.0 Health Monitor Band', price:'£0 + sub',oldPrice:'',       emoji:'📊', url:'https://whoop.com' },
+  { id:'p26', cat:'apps',        brand:'Garmin',     name:'Fenix 7 Pro Multisport Watch',  price:'£599.99', oldPrice:'£749.99',emoji:'⌚', url:'https://garmin.com' },
+  { id:'p27', cat:'apps',        brand:'Polar',      name:'Pacer Pro GPS Running Watch',   price:'£249.99', oldPrice:'£299.99',emoji:'🏃', url:'https://polar.com' },
+  { id:'p28', cat:'apps',        brand:'Wahoo',      name:'KICKR Smart Bike Trainer',      price:'£1,199',  oldPrice:'£1,499', emoji:'🚴', url:'https://wahoofitness.com' },
+  // NUTRITION
+  { id:'p29', cat:'nutrition',   brand:'Huel',       name:'Black Edition Powder v3.1 1.7kg',price:'£44.99', oldPrice:'£54.99',emoji:'🥗', url:'https://huel.com' },
+  { id:'p30', cat:'nutrition',   brand:'Grenade',    name:'Carb Killa Protein Bars Box x12',price:'£24.99', oldPrice:'£32.99',emoji:'🍫', url:'https://grenade.com' },
+  { id:'p31', cat:'nutrition',   brand:'Bulk',       name:'Complete Lean Muscle Bundle',   price:'£79.99',  oldPrice:'£109.99',emoji:'💪', url:'https://bulk.com' },
+  { id:'p32', cat:'nutrition',   brand:'Huel',       name:'Ready to Drink 500ml x8',       price:'£19.99',  oldPrice:'£24.99', emoji:'🧃', url:'https://huel.com' },
+];
+
+function loadProducts() {
+  try { return JSON.parse(localStorage.getItem('fiturafy_products')) || DEFAULT_PRODUCTS; }
+  catch(e) { return DEFAULT_PRODUCTS; }
+}
+
+function renderProducts() {
+  const prods = loadProducts();
+  const container = document.getElementById('productsContainer');
+  if (!container) return;
+
+  container.innerHTML = PRODUCT_CATS.map(cat => {
+    const catProds = prods.filter(p => p.cat === cat.id);
+    if (catProds.length === 0) return '';
+    return `
+      <div class="product-category-block reveal">
+        <div class="product-cat-header">
+          <span class="product-cat-icon">${cat.icon}</span>
+          <span class="product-cat-title">${cat.label}</span>
+          <span class="product-cat-badge">${catProds.length} picks</span>
+          <span class="product-cat-affiliate">Affiliate Links</span>
+        </div>
+        <div class="products-grid">
+          ${catProds.map(p => `
+            <div class="product-card">
+              <div class="product-img-placeholder">${p.emoji || '🏋️'}</div>
+              <div class="product-body">
+                <div class="product-brand">${p.brand}</div>
+                <div class="product-name">${p.name}</div>
+                <div class="product-price-row">
+                  <span class="product-price">${p.price}</span>
+                  ${p.oldPrice ? `<span class="product-price-old">${p.oldPrice}</span>` : ''}
+                </div>
+                <button class="product-buy-btn" onclick="window.open('${p.url}','_blank')">
+                  Shop Now →
+                </button>
+                <div class="product-affiliate-tag">⚡ Affiliate link — supports Fiturafy</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Re-run scroll reveal on new elements
+  document.querySelectorAll('.product-category-block.reveal').forEach(el => observer.observe(el));
+}
+
+renderProducts();
+
 // ===== COMING SOON VEIL =====
 (function() {
   // Launch date: 30 days from March 12 2026
