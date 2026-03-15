@@ -2662,7 +2662,10 @@ function renderProducts() {
   }).join('');
 
   // Re-run scroll reveal on new elements
-  document.querySelectorAll('.product-category-block.reveal').forEach(el => observer.observe(el));
+  const prodObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); prodObserver.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.product-category-block.reveal').forEach(el => prodObserver.observe(el));
 }
 
 renderProducts();
@@ -2670,7 +2673,7 @@ renderProducts();
 // ===== COMING SOON VEIL =====
 (function() {
   // Launch date: 30 days from March 12 2026
-  const LAUNCH = new Date('2026-04-11T00:00:00');
+  const LAUNCH = new Date('2026-04-14T00:00:00'); // 30 days from March 15 2026
   const PREVIEW_PASS = 'fiturafy2025';
 
   function updateVeilCountdown() {
@@ -2704,8 +2707,16 @@ renderProducts();
     return;
   }
 
-  updateVeilCountdown();
-  setInterval(updateVeilCountdown, 1000);
+  // Run immediately and every second
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      updateVeilCountdown();
+      setInterval(updateVeilCountdown, 1000);
+    });
+  } else {
+    updateVeilCountdown();
+    setInterval(updateVeilCountdown, 1000);
+  }
 
   window.veilNotify = function() {
     const email = document.getElementById('veilEmail').value;
